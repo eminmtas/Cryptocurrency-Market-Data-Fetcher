@@ -23,14 +23,14 @@ class CryptoData:
 
     # Helper function to format numbers with commas
     def intcomma(self, value):
-        return "{:,}".format(value).replace(",", ".")
+        return "{:,}".format(value)
 
     # Print the data
     def print_crypto_data(self):
         data = self.get_data()
         print("{:<10} {:<10} {:<20}".format("COIN", "PRICE", "MARKET CAP"))
         for i in data:
-            print("{:<10} {:<10} {:<20} USDT".format(i['symbol'], int(i['quote']['USDT']['price']), self.intcomma(int(i['quote']['USDT']['market_cap']))))
+            print("{:<10} {:<10.2f} {:<20} USDT".format(i['symbol'], i['quote']['USDT']['price'], self.intcomma(i['quote']['USDT']['market_cap'])))
 
 # Create a CryptoData object
 crypto_data = CryptoData('YOUR_API_KEY')
